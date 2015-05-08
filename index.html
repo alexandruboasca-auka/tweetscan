@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TweetScan</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="overlay"></div>
+    <div class="spin-cont">
+        
+    </div>
+     
+    <div class="header_container"> 
+            <header class="main_header">TweetScan</header>
+    </div>
+
+    <div class="search_container"> 
+        <form method="get" action="result">
+           <i id="settings_cog" class="fa fa-cog fa-5x"></i>
+            <input type="text" name="search_term" class="search_input" autofocus>
+            <i id="enter_arrow" class="fa fa-arrow-right fa-5x" action="result"></i>
+        </form> 
+    </div>
+
+    <div id="sett_cont" class="settings_container">
+
+    </div>
+
+    <script>
+        $("#settings_cog").click(function() {
+            $("#sett_cont").slideToggle();  
+        });
+    </script>
+
+    <a id="shutdown"; href="./shutdown">Shutdown Server</a>
+</body>
+</html>
