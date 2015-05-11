@@ -1,42 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <title>TweetScan</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 
     <div class="overlay"></div>
-    <div class="spin-cont">
-        
-    </div>
-     
-    <div class="header_container"> 
-            <header class="main_header">TweetScan</header>
-    </div>
+    <div class="spin-cont"></div>
+    <div id="page_wrapper">
+                <div class="header_container"> 
+                <header class="main_header">Live <i class="fa fa-clock-o"></i> Scan</header>
+        </div>
 
-    <div class="search_container"> 
-        <form method="get" action="result">
-           <i id="settings_cog" class="fa fa-cog fa-5x"></i>
-            <input type="text" name="search_term" class="search_input" autofocus>
-            <i id="enter_arrow" class="fa fa-arrow-right fa-5x" action="result"></i>
-        </form> 
-    </div>
+        <div class="search_container"> 
+            <form method="get" action="result">
+               <i id="settings_cog" class="fa fa-cog fa-5x"></i>
+                <input type="text" name="search_term" class="search_input" autofocus>
+                <i id="enter_arrow" class="fa fa-arrow-right fa-5x" action="result"></i>
+            </form> 
+        </div>
 
-    <div id="sett_cont" class="settings_container">
+        <div id="info_container">
+       <p>Warning: LiveScan searches tweets in real time. 
+        This takes a considerate amount of time. Be patient, and remember: the more popular the search term,
+        the less time it takes.
+        </div>
 
-    </div>
+        <div id="sett_cont" class="settings_container">
 
-    <script>
-        $("#settings_cog").click(function() {
-            $("#sett_cont").slideToggle();  
-        });
-    </script>
+        </div>
 
-    <a id="shutdown"; href="./shutdown">Shutdown Server</a>
+        <script>
+            $("#settings_cog").click(function() {
+                $("#sett_cont").slideToggle();  
+            });
+        </script>
+
+        <div id="footer">
+            <i id="github_link" class="fa fa-github fa-3x"><a href="https://github.com/alexandruboasca" target="_blank"> Alexandru Boa&#351c&#259</a></i>
+        </div> 
+            </div>
+
 </body>
 </html>
