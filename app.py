@@ -10,10 +10,10 @@ import tweepy
 import sqlite3
 
 #Twitter API credentials
-ckey = 'T8Poz8mbJ0MNHhBkRdnZ5pob4'
-csecret = 'nVGDX6ni63kDVkHiIReM9snsSWhlJnGDpOk2ah8tOdrCA1DYD5'
-atoken = '3130785886-JpEqFnloPNmmpOFri54g7aEjkKKMVuQUAI4sKKA'
-asecret = '0efgtCpv18aoXzcXzBs8YCejimYVC63XlZUYgk77YlySw'
+ckey = ''
+csecret = ''
+atoken = ''
+asecret = ''
 
 #Global constants
 DELETE_TIME_SECONDS = 300
