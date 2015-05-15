@@ -17,7 +17,7 @@ asecret = '0efgtCpv18aoXzcXzBs8YCejimYVC63XlZUYgk77YlySw'
 
 #Global constants
 DELETE_TIME_SECONDS = 300
-MAX_TWEETS = 50
+MAX_TWEETS = 100
 JSON_MAX = 30
 
 
@@ -49,17 +49,18 @@ class WordProcess():
             match_word = re.findall(pattern, row[2].decode('utf-8'))
             #Iterate through each word
             for word in match_word:
+                encoded_word = word.encode('utf-8').strip().lower()
                 #Check the word against the excluded words **NOT WORKING**
-                if (word.encode('utf-8').strip().lower() in excluded_words):
+                if (encoded_word in excluded_words):
                     continue
                 #Prepared statement with the word matched.
-                prep_stat_two = (self.sterm, word.encode('utf-8').strip().lower(),)
+                prep_stat_two = (self.sterm, encoded_word,)
                 #Execute the query.
                 cursor.execute('SELECT * FROM terms WHERE sterm=? AND aterm=?', prep_stat_two)
                 data = cursor.fetchone()
                 #Check to see if the term is already in the DB. If it is, increment the no of mention. If not, insert it.
                 if data is None:
-                    prep_stat_three = (self.sterm, word.encode('utf-8').strip().lower(),datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),)
+                    prep_stat_three = (self.sterm, encoded_word, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),)
                     connection.execute('INSERT INTO terms (sterm, aterm, mentions, fmention) VALUES (?,?,1,?)', prep_stat_three)
                 else:
                     connection.execute('UPDATE terms SET mentions = mentions + 1 WHERE sterm = ? AND aterm = ?', prep_stat_two)           
@@ -176,5 +177,6 @@ class MainApp(object):
         return open('index.html')
 
 if __name__ == '__main__':
-	cherrypy.quickstart(MainApp(), '/', 'app.config')		
-
+    cherrypy.config.update(
+    {'server.socket_host': '0.0.0.0'} )
+    cherrypy.quickstart(MainApp(), '/', 'app.config')
