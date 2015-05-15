@@ -177,6 +177,4 @@ class MainApp(object):
         return open('index.html')
 
 if __name__ == '__main__':
-    cherrypy.config.update(
-    {'server.socket_host': '0.0.0.0'} )
     cherrypy.quickstart(MainApp(), '/', 'app.config')
